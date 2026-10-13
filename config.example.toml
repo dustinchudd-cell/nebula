@@ -1,0 +1,35 @@
+[services]
+# Set the actual HTTP(S) Space deployment origin (mount paths are supported).
+# Blank uses https://gointospace.app; explicit custom origins are preserved.
+space_origin = ""
+
+[marketplace]
+enabled = false # Turn on or off the marketplace entirely
+psk = "CHANGEME" # Change this to something more secure.
+level = 1
+origin = "" # Static builds only: origin whose /api/* + /packages/ are fetched through the proxy (e.g. https://nebulaproxy.io). Empty = same-origin (SSR).
+
+[seo]
+enabled = false
+domain = "https://nebulaproxy.io"
+
+[db]
+name = "database" # Your database name
+username = "username" # The username of your DB (SQLITE just ignores this)
+password = "password" # The password to your DB (SQLITE ignores this)
+postgres = false # Enable to use postgres over sqlite (recommended for large prod instances)
+
+[postgres] # Set the "domain" to either and ip address or a actual domain 
+domain = ""
+port = 5432
+
+[server.server]
+port = 8080
+wisp = true
+logging = true # Disable for the tons & tons of logs to go away (useful for debugging but otherwise eh)
+
+[masqr]
+enabled = false
+failed = "failed.html" # Default masqr failed page. For per-site failed pages, create a folder named "Masqrd" and create DOMAIN.TLD.html
+whitelisted = ["https://nebulaservices.org"] # List of domains to skip masqr
+url = "" # Masqr license URL
